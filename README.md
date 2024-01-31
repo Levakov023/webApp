@@ -1,5 +1,5 @@
 # Python web app
-Student : Nikola Levakov
+
 #
 tema : Sudstvo , evidencija sudskih postupaka
 ## Kako pokrenuti
