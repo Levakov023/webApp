@@ -1,22 +1,22 @@
-# Seminarski rad iz predmeta softversko inženjerstvo 2
-Student : Nikola Levakov IT 52/19
+# Python web app
+Student : Nikola Levakov
 #
 tema : Sudstvo , evidencija sudskih postupaka
 ## Kako pokrenuti
 
-instalirati python
+install python
 
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Pokrenuti aplikaciju
+## run main
 
 ```bash
 python main.py
 ```
 
-## Kada se pokrene aplikacija
+## Run app
 
-pokrenuti pretraživač i otići na `http://127.0.0.1:5000`
+ `http://127.0.0.1:5000`
