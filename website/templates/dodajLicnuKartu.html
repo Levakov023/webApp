@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Додавање нове Личне Карте{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Додај нову Личну Карту</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="broj_licne_karte">Број Личне Карте:</label>
+            <input type="text" class="form-control" id="broj_licne_karte" name="broj_licne_karte" required>
+        </div>
+        <div class="form-group">
+            <label for="naziv_sup_izdao">Назив СУП-а који је издао:</label>
+            <input type="text" class="form-control" id="naziv_sup_izdao" name="naziv_sup_izdao" required>
+        </div>
+        <div class="form-group">
+            <label for="mesto_sup_izdao">Место СУП-а који је издао:</label>
+            <input type="text" class="form-control" id="mesto_sup_izdao" name="mesto_sup_izdao" required>
+        </div>
+        <div class="form-group">
+            <label for="jmbg_vlasnika">ЈМБГ Власника:</label>
+            <input type="text" class="form-control" id="jmbg_vlasnika" name="jmbg_vlasnika" required>
+        </div>
+        <div class="form-group">
+            <label for="prezime_vlasnika">Презиме Власника:</label>
+            <input type="text" class="form-control" id="prezime_vlasnika" name="prezime_vlasnika" required>
+        </div>
+        <div class="form-group">
+            <label for="ime_vlasnika">Име Власника:</label>
+            <input type="text" class="form-control" id="ime_vlasnika" name="ime_vlasnika" required>
+        </div>
+        <div class="form-group">
+            <label for="datum_izdavanja">Датум Издавања:</label>
+            <input type="date" class="form-control" id="datum_izdavanja" name="datum_izdavanja" required>
+        </div>
+        <div class="form-group">
+            <label for="broj_godina_vazenja">Број Година Важења:</label>
+            <input type="text" class="form-control" id="broj_godina_vazenja" name="broj_godina_vazenja" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Додај Личну Карту</button>
+    </form>
+</div>
+{% endblock %}

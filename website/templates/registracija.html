@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block title %}регистрација{% endblock %} {% block
+content %}
+<form method="POST">
+  <h3 align="center">Регистрација</h3>
+  <div class="form-group">
+    <label for="email">Имејл адреса</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Унесите имејл"
+    />
+  </div>
+  <div class="form-group">
+    <label for="ime">Име</label>
+    <input
+      type="text"
+      class="form-control"
+      id="ime"
+      name="ime"
+      placeholder="унесите име"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="sifra1">Шифра</label>
+    <input
+      type="password"
+      class="form-control"
+      id="sifra1"
+      name="sifra1"
+      placeholder="унесите шифру"
+    />
+  </div>
+  <div class="form-group">
+    <label for="sifra2">Шифра (Потврди)</label>
+    <input
+      type="password"
+      class="form-control"
+      id="sifra2"
+      name="sifra2"
+      placeholder="потврдите шифру"
+    />
+  </div>
+    <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="jeovlascen" name="jeovlascen">
+    <label class="form-check-label" for="jeovlascen">Ovlašćen korisnik</label>
+</div>
+
+  <br />
+
+    <br>
+  <button type="submit" class="btn btn-primary">Прихвати</button>
+</form>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%} <!--extenduje base.html, biće identičan kao base.html samo što se može menjati.
+Ako umesto home stavio nešto drugo, promeniće ga u base.html-u-->
+    <h1 align="center">Судске одлуке</h1>
+    <form method="POST">
+    <div class="form-group">
+        <label for="jmbg_filter">Филтер по JMBG:</label>
+        <input type="text" class="form-control" id="jmbg_filter" name="jmbg_filter" placeholder="Унесите JMBG">
+    </div>
+    <button type="submit" class="btn btn-primary">Примени филтер</button>
+</form>
+    {% if user.jeovlascen %}
+        <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Наслов</th>
+        <th scope="col">Датум</th>
+          <th scope="col">Бриши</th>
+          <th scope="col">Ажурирај</th>
+          <th scope="col">Штампај</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for odluka in sudski_odluke %}
+        <tr>
+          <td>{{ odluka.Naslov }}</td>
+          <td>{{ odluka.date.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+             <td>
+                <a href="{{ url_for('views.delete_odluka', odluka_id=odluka.OdlukaID) }}" class="btn btn-danger btn-sm">Обриши</a>
+            </td>
+            <td>
+                <a href="{{ url_for('views.azuriranje', odlukaID=odluka.OdlukaID) }}" class="btn btn-secondary">Ажурирање</a>
+                <button type="button" class="close" onClick="brisiOdluku({{ odluka.OdlukaID }})">
+
+                </button>
+            </td>
+            <td>
+                <a href="{{ url_for('views.stampa_odluke', odlukaID=odluka.OdlukaID) }}" class="btn btn-info"> Штампај</a>
+            </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+        {% else %}
+        <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Наслов</th>
+        <th scope="col">Датум</th>
+          <th scope="col">Штампај</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for odluka in sudski_odluke %}
+        <tr>
+          <td>{{ odluka.Naslov }}</td>
+          <td>{{ odluka.date.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            <td>
+                <a href="{{ url_for('views.stampa_odluke', odlukaID=odluka.OdlukaID) }}" class="btn btn-info"> Штампај</a>
+            </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+    {% endif %}
+
+
+{% endblock %}

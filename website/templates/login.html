@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %}Пријава{% endblock %} {% block content
+%}
+<form method="POST">
+  <h1 align="center">Пријава</h1>
+  <div class="form-group">
+    <label for="email">Имејл адреса</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="унесите имејл"
+    />
+  </div>
+  <div class="form-group">
+    <label for="sifra">Шифра</label>
+    <input
+      type="password"
+      class="form-control"
+      id="sifra"
+      name="sifra"
+      placeholder="Унесите шифру"
+    />
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Пријава</button>
+</form>
+{% endblock %}

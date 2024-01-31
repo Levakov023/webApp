@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Додавање нове одлуке{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mt-4">Додај нову судску одлуку</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="naslov">Наслов:</label>
+                <input type="text" class="form-control" id="naslov" name="naslov" required>
+            </div>
+            <div class="form-group">
+                <label for="sadrzaj">Садржај:</label>
+                <textarea class="form-control" id="sadrzaj" name="sadrzaj" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="jmbg_list">ЈМБГ Странки (одвојен зарезом)</label>
+                <input type="text" class="form-control" id="jmbg_list" name="jmbg_list"
+                       placeholder="Unesite JMBG-ove odvojene zarezima" required>
+            </div>
+            <div class="form-group">
+                <label for="sud">Изаберите суд:</label>
+                <select class="form-control" id="sud" name="sud">
+                    {% for sud in sudovi %}
+                        <option value="{{ sud.naziv }}">{{ sud.naziv }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Додај Одлуку</button>
+        </form>
+    </div>
+{% endblock %}
+
+

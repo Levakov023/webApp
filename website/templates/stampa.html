@@ -1,0 +1,45 @@
+{% extends "base.html" %} <!-- Extendujemo base.html -->
+{% block title %}Штампање Одлуке{% endblock %} <!-- Postavljamo naslov stranice -->
+{% block content %}
+    <div class="container">
+        <h1 align="center">Детаљи судске одлуке</h1>
+        <table class="table">
+            <tr>
+                <th scope="col">Наслов</th>
+                <td>{{ odluka.Naslov }}</td> <!-- Prikazujemo naslov odluke -->
+            </tr>
+            <tr>
+                <th scope="col">Датум</th>
+                <td>{{ odluka.date.strftime('%Y-%m-%d %H:%M:%S') }}</td> <!-- Prikazujemo datum -->
+            </tr>
+            <tr>
+                <th scope="col">Садржај</th>
+                <td>{{ odluka.Sadrzaj }}</td> <!-- Prikazujemo sadržaj odluke -->
+            </tr>
+            <tr>
+                <th scope="col">Суд</th>
+                <td>{{ odluka.sud.naziv }}</td> <!-- Prikazujemo naziv suda -->
+            </tr>
+            <tr>
+                <th scope="col">JMBG Листа</th>
+                <td>
+                    <ol>
+                        {% for jmbg in odluka.JMBG_list %}
+                            <li>{{ jmbg }}</li> <!-- Prikazujemo listu JMBG brojeva -->
+                        {% endfor %}
+                    </ol>
+                </td>
+            </tr>
+            <tr>
+                <th scope="col"></th>
+                <td>
+                    <form action="{{ url_for('views.stampa_azuriranje', odlukaID=odluka.OdlukaID) }}" method="POST">
+                        <button type="submit" class="btn btn-success">Назад на почетну</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Додај Суд{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 align="center">Додај Суд</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="naziv">Назив Суда</label>
+            <input type="text" class="form-control" id="naziv" name="naziv" placeholder="Унесите назив суда">
+        </div>
+        <div class="form-group">
+            <label for="mesto">Место Суда</label>
+            <input type="text" class="form-control" id="mesto" name="mesto" placeholder="Унесите место суда">
+        </div>
+        <button type="submit" class="btn btn-primary">Додај Суд</button>
+    </form>
+</div>
+{% endblock %}

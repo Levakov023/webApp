@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Ажурирање одлуке{% endblock %}
+{% block content %}
+    <h1 align="center">Ажурирање Судске одлуке</h1>
+    <form method="POST">
+        <input type="hidden" name="odlukaID" value="{{ odluka.OdlukaID }}">
+        <!-- Dodajte ostala polja za unos podataka i popunite ih sa vrednostima izabrane odluke -->
+        <div class="form-group">
+            <label for="naslov">Наслов:</label>
+            <input type="text" class="form-control" id="naslov" name="naslov" value="{{ odluka.Naslov }}">
+        </div>
+        <div class="form-group">
+            <label for="sadrzaj">Садржај:</label>
+            <textarea class="form-control" id="sadrzaj" name="sadrzaj">{{ odluka.Sadrzaj }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="sud_id">Суд:</label>
+            <select class="form-control" id="sud_id" name="sud_id">
+                {% for sud in sudovi %}
+                    <option value="{{ sud.id }}"
+                            {% if sud.id == odluka.sud_id %}selected{% endif %}>{{ sud.naziv }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="jmbg_list">ЈМБГ Листа (Раздвојите зарезима):</label>
+            <input type="text" class="form-control" id="jmbg_list" name="jmbg_list"
+                   value="{{ ','.join(odluka.JMBG_list) }}">
+        </div>
+        <!-- Dodajte ostala polja za unos podataka i popunite ih sa vrednostima izabrane odluke -->
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Сачувај Ажурирање</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Личне Карте{% endblock %}
+{% block content %}
+    <h1 align="center">Личне Карте</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="jmbg_filter">Филтер по JMBG:</label>
+            <input type="text" class="form-control" id="jmbg_filter" name="jmbg_filter" placeholder="Унесите JMBG">
+        </div>
+        <button type="submit" class="btn btn-primary">Примени филтер</button>
+    </form>
+    {% if user.jeovlascen %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Број Личне Карте</th>
+                    <th scope="col">Назив СУП Издао</th>
+                    <th scope="col">Место СУП Издао</th>
+                    <th scope="col">JMBG Власника</th>
+                    <th scope="col">Презиме Власника</th>
+                    <th scope="col">Име Власника</th>
+                    <th scope="col">Датум Издавања</th>
+                    <th scope="col">Број Година Важења</th>
+                    <th scope="col">Бриши</th>
+                    <th scope="col">Ажурирај</th>
+                    <th scope="col">Штампај</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for licna_karta in licne_karte %}
+                    <tr>
+                        <td>{{ licna_karta.BrojLicneKarte }}</td>
+                        <td>{{ licna_karta.NazivSUPIzdao }}</td>
+                        <td>{{ licna_karta.MestoSUPIzdao }}</td>
+                        <td>{{ licna_karta.JMBGVlasnika }}</td>
+                        <td>{{ licna_karta.PrezimeVlasnika }}</td>
+                        <td>{{ licna_karta.ImeVlasnika }}</td>
+                        <td>{{ licna_karta.DatumIzdavanja }}</td>
+                        <td>{{ licna_karta.BrojGodinaVazenja }}</td>
+                        <td>
+                            <a href="{{ url_for('views.delete_licna_karta', BrojLicneKarte=licna_karta.BrojLicneKarte) }}" class="btn btn-danger btn-sm">Обриши</a>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('views.azuriranje_licna_karta', BrojLicneKarte=licna_karta.BrojLicneKarte) }}" class="btn btn-secondary">Ажурирање</a>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('views.stampaj_licna_karta', BrojLicneKarte=licna_karta.BrojLicneKarte) }}" class="btn btn-info"> Штампај</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Број Личне Карте</th>
+                    <th scope="col">Назив СУП Издао</th>
+                    <th scope="col">Место СУП Издао</th>
+                    <th scope="col">JMBG Власника</th>
+                    <th scope="col">Презиме Власника</th>
+                    <th scope="col">Име Власника</th>
+                    <th scope="col">Датум Издавања</th>
+                    <th scope="col">Број Година Важења</th>
+                    <th scope="col">Штампај</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for licna_karta in licne_karte %}
+                    <tr>
+                        <td>{{ licna_karta.BrojLicneKarte }}</td>
+                        <td>{{ licna_karta.NazivSUPIzdao }}</td>
+                        <td>{{ licna_karta.MestoSUPIzdao }}</td>
+                        <td>{{ licna_karta.JMBGVlasnika }}</td>
+                        <td>{{ licna_karta.PrezimeVlasnika }}</td>
+                        <td>{{ licna_karta.ImeVlasnika }}</td>
+                        <td>{{ licna_karta.DatumIzdavanja }}</td>
+                        <td>{{ licna_karta.BrojGodinaVazenja }}</td>
+                        <td>
+                            <a href="{{ url_for('views.stampaj_licna_karta', BrojLicneKarte=licna_karta.BrojLicneKarte) }}" class="btn btn-info"> Штампај</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
